@@ -31,4 +31,39 @@ public class BubbleSortFiles{
         array[j] = temp;
     }
 
+    // Método principal BubbleSort para ordenar nombres (Strings)
+    public void bubbleSort(String[] array){
+        int n = array.length;
+        boolean intercambio;
+
+        for (int i = 0; i < n - 1; i++){
+            intercambio = false;
+            
+            // Últimos i elementos ya están ordenados
+            for (int j = 0; j < n - i - 1; j++){
+
+                if (array[j].compareToIgnoreCase(array[j + 1]) > 0){
+                    swap(array, j, j + 1);
+                    intercambio = true;
+                }
+            }
+            
+            // Si no hubo intercambios, el arreglo ya está ordenado
+            if (!intercambio)
+                break;
+        }
+    }
+
+    // Versión alternativa sin optimización
+    public void bubbleSortBasic(String[] array){
+        int n = array.length;
+        
+        for (int i = 0; i < n - 1; i++){
+            for (int j = 0; j < n - i - 1; j++){
+                if (array[j].compareToIgnoreCase(array[j + 1]) > 0){
+                    swap(array, j, j + 1);
+                }
+            }
+        }
+    }
 }
