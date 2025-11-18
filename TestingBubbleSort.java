@@ -14,11 +14,8 @@ public class TestingBubbleSort{
         BubbleSortFiles bsFiles = new BubbleSortFiles();
         BufferedReader bufer = new BufferedReader(new InputStreamReader(System.in));
         String fileName;
+        String fileNameOut;
         String[] nombres;
-
-        System.out.println("==========================================");
-        System.out.println("  PROGRAMA BUBBLESORT - ORDENAR NOMBRES   ");
-
         
         // Leer archivo de entrada
         System.out.print("\nEscribe el nombre del archivo a leer: ");
@@ -28,6 +25,23 @@ public class TestingBubbleSort{
         // Mostrar arreglo original
         System.out.println("\n* LISTA ORIGINAL (Sin ordenar) *");
         printStringArray(nombres);
-
+        
+        // Aplicar BubbleSort
+        System.out.println(">>> Aplicando algoritmo BubbleSort...");
+        System.out.println(" Comparando nombres alfabéticamente...");
+        bsFiles.bubbleSort(nombres);
+        
+        // Mostrar arreglo ordenado
+        System.out.println("\n* LISTA ORDENADA ALFABÉTICAMENTE *");
+        printStringArray(nombres);
+        
+        // Guardar resultado en nuevo archivo
+        System.out.print("Escribe el nombre del archivo de salida (ordenado): ");
+        fileNameOut = bufer.readLine();
+        bsFiles.writeStringArrayToFile(fileNameOut, nombres);
+        
+        System.out.println("\n¡Archivo ordenado guardado exitosamente!");
+        System.out.println("Ubicacion: C:\\Archivos\\" + fileNameOut);
+        System.out.println("==========================================");
     }
 }
